@@ -6,7 +6,6 @@ from suds.client import Client
 
 app = Flask("__name__")
 server_uri = os.environ.get("SERVER_URI")
-client = Client(server_uri, cache=None)
 
 
 @app.route('/')
@@ -17,7 +16,7 @@ def index():
 
 @app.route('/showip', methods=['GET'])
 def host():
-    global client
+    client = Client(server_uri, cache=None)
     domain_name = request.args.get('domain_name')
     if domain_name is None:
         domain_name = 'google.com'
@@ -26,7 +25,7 @@ def host():
 
 @app.route('/dns', methods=['GET'])
 def dns():
-    global client
+    client = Client(server_uri, cache=None)
     domain_name = request.args.get('domain_name')
     if domain_name is None:
         domain_name = 'google.com'
