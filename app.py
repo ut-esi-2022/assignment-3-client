@@ -4,14 +4,14 @@ from flask import Flask, request
 from suds.client import Client
 
 app = Flask("__name__")
-server_uri = os.environ.get("SERVER_URI")
+# server_uri = os.environ.get("SERVER_URI")
 # client = Client(server_uri, cache=None)
 
 
 @app.route('/')
 def index():
     global server_uri
-    return f"Server URL: {server_uri}"
+    return f"Server URL: hi there"
 
 
 # @app.route('/showip', methods=['GET'])
