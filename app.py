@@ -9,9 +9,13 @@ server_uri = os.environ.get('SERVER_URI')
 client = Client(server_uri, cache=None)
 
 
-@app.route('/')
+@app.route('/', methods=['GET'])
 def index():
     global server_uri
+    domain_name = request.args.get('domain_name')
+    if domain_name is None:
+        domain_name = 'www.facebook.com'
+    return client.service.ping_host(domain_name)
     return f'Server URL: {server_uri}'
 
 
