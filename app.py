@@ -16,7 +16,6 @@ def index():
     if domain_name is None:
         domain_name = 'www.facebook.com'
     return client.service.ping_host(domain_name)
-    return f'Server URL: {server_uri}'
 
 
 @app.route('/showip', methods=['GET'])
